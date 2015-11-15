@@ -1,0 +1,109 @@
+Format: 1.8
+Date: Mon, 11 May 2015 15:44:00 +0100
+Source: virtuoso-opensource
+Binary: virtuoso-nepomuk virtuoso-opensource virtuoso-server virtuoso-minimal virtuoso-opensource-7 virtuoso-opensource-7-common virtuoso-opensource-7-bin virtuoso-vsp-startpage virtuoso-vad-conductor virtuoso-vad-doc virtuoso-vad-demo virtuoso-vad-tutorial virtuoso-vad-rdfmappers virtuoso-vad-sparqldemo virtuoso-vad-syncml virtuoso-vad-bpel virtuoso-vad-isparql virtuoso-vad-ods libvirtodbc0 libvirtuoso5.5-cil libvirtjdbc0
+Architecture: source all amd64
+Version: 7.2
+Distribution: unstable
+Urgency: low
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: OpenLink Virtuoso Maintainer <vos.admin@openlinksw.com>
+Description:
+ libvirtjdbc0 - high-performance database - JDBC libraries
+ libvirtodbc0 - high-performance database - ODBC libraries
+ libvirtuoso5.5-cil - high-performance database - Mono assemblies
+ virtuoso-minimal - high-performance database - core dependency package
+ virtuoso-nepomuk - transitional package for virtuoso-minimal
+ virtuoso-opensource - high-performance database
+ virtuoso-opensource-7 - high-performance database - support files
+ virtuoso-opensource-7-bin - high-performance database - binaries
+ virtuoso-opensource-7-common - high-performance database - common files
+ virtuoso-server - high-performance database - server dependency package
+ virtuoso-vad-bpel - high-performance database - BPEL module
+ virtuoso-vad-conductor - high-performance database - conductor module
+ virtuoso-vad-demo - high-performance database - demo module
+ virtuoso-vad-doc - high-performance database - documentation module
+ virtuoso-vad-isparql - high-performance database - iSPARQL module
+ virtuoso-vad-ods - high-performance database - Open Data Spaces module
+ virtuoso-vad-rdfmappers - high-performance database - RDF mappers module
+ virtuoso-vad-sparqldemo - high-performance database - SPARQL demo module
+ virtuoso-vad-syncml - high-performance database - SyncML module
+ virtuoso-vad-tutorial - high-performance database - tutorial module
+ virtuoso-vsp-startpage - high-performance database - web interface files
+Changes:
+ virtuoso-opensource (7.2) unstable; urgency=low
+ .
+   * Remove openjdk-6-jdk and virtjdbc4.jar from libvirtjdbc0 target
+Checksums-Sha1:
+ b45b7e0dfaf4c162d7ea72db51afd3672f778a72 3327 virtuoso-opensource_7.2.dsc
+ 24cc1506f2b72e7af3fad2cd0b2fbc797ff20eb8 118900803 virtuoso-opensource_7.2.tar.gz
+ 10e0dcd84d7fe45df2aaee7c0d7ef7bbf2f1baf3 30906 virtuoso-nepomuk_7.2_all.deb
+ b9e84bdf83584b8eb93cffd6a8e01b6dc1c36984 28648 virtuoso-opensource_7.2_all.deb
+ 82836fde4275a08755e834b432e2d700d762edd4 28512 virtuoso-server_7.2_all.deb
+ 8721d6abfecacec90c290ac9dd2c24e78077d880 28574 virtuoso-minimal_7.2_all.deb
+ f3dfecebb7f66427d344b715a4d54fb5a079da45 449888 virtuoso-vsp-startpage_7.2_all.deb
+ b8ac9fba19fcf4d918c2ac86c7d950682f21b1c5 1269874 virtuoso-vad-conductor_7.2_all.deb
+ f31a0a9e536c50391e8bfdc13ef6e190f62c2e63 28442 virtuoso-vad-doc_7.2_all.deb
+ e52811cf805cb305b3f38588ed805b6a0003f50a 10925062 virtuoso-vad-demo_7.2_all.deb
+ b301c91331dbdbfa41a05d4cfb6f528beb6ac281 2147690 virtuoso-vad-tutorial_7.2_all.deb
+ 754285d0dac35647ebfd9ecb06705afc55c62e2a 2452506 virtuoso-vad-rdfmappers_7.2_all.deb
+ 78d589e7d6481c80b744181559356f42b7200bf9 564156 virtuoso-vad-sparqldemo_7.2_all.deb
+ 1a3634d0d739d557d5511ebb85bcc90d7801396e 44480 virtuoso-vad-syncml_7.2_all.deb
+ eb248689c48a6a2d63c925bcfb54d7163acf0788 243624 virtuoso-vad-bpel_7.2_all.deb
+ 4895a3b6b9caf4a40424fa0c2f10abbb95ac96a6 704952 virtuoso-vad-isparql_7.2_all.deb
+ bee37dafd7de158be31468e54782b3cbcca52416 4418108 virtuoso-vad-ods_7.2_all.deb
+ 3e34a5f93c161c24e6b91b401de386a0c43a2c22 178034 virtuoso-opensource-7_7.2_amd64.deb
+ 9dc632f90d9ebd8c45fe09d222e975b2c8a57502 42240 virtuoso-opensource-7-common_7.2_amd64.deb
+ 7dd7a4009ab35e4022f0570385d1dec9f72d06c6 3971262 virtuoso-opensource-7-bin_7.2_amd64.deb
+ f0de00674d6879db5ce2177d0f7b4d62a34fb477 376346 libvirtodbc0_7.2_amd64.deb
+ ec43de3b00cfe79c340f2bf921d75015e0d920bb 86230 libvirtuoso5.5-cil_7.2_amd64.deb
+ dd859128088b23af8b40c08f2e74475c3bae74d6 357368 libvirtjdbc0_7.2_amd64.deb
+Checksums-Sha256:
+ 79ceca77339967ef26f7ac80a6d25220e59c2de8f2d756e6b68f15d38e3ab7ed 3327 virtuoso-opensource_7.2.dsc
+ b087bd1bfe4bdede45c69d6c3bb706d9ce537334dce56c186b2f9ae58f17499d 118900803 virtuoso-opensource_7.2.tar.gz
+ 984d552503e05b322940b8a1c9b91af9848f20a624b3c00bb43775cc97ed7667 30906 virtuoso-nepomuk_7.2_all.deb
+ ba8c52cc2509c956307cdf0e4f418b282fe57edaa14aa71927042260c48d8dba 28648 virtuoso-opensource_7.2_all.deb
+ 6441f8d7c8ed85f2f1dc54e8be8ebb216da6b918fd1768d189490a3e38ea69e6 28512 virtuoso-server_7.2_all.deb
+ 5fdbcacb8277cc13470a64ab0be6b92991546001c9655101be88499f25dfc6a5 28574 virtuoso-minimal_7.2_all.deb
+ a37ef691687f83c6362c2e678e37aa4a4144524ece8128f6518574701139a487 449888 virtuoso-vsp-startpage_7.2_all.deb
+ 1dc8e226dc55c30a11ae8422294defa0e5953c1df7366483cceeb44447421d58 1269874 virtuoso-vad-conductor_7.2_all.deb
+ 2814f6807ff32dd310a1f05f58cc098762ffd7719c7b3905d6a64f06b6b14da2 28442 virtuoso-vad-doc_7.2_all.deb
+ bc640ef5d330420dd0aa3b221220a1278ede9293f66e2ef4f4ac949bbbac67ee 10925062 virtuoso-vad-demo_7.2_all.deb
+ 786a5120ff26af9c0bd2d9e3b96fec80c5dcee4721803aa0f32fce0c99c4af71 2147690 virtuoso-vad-tutorial_7.2_all.deb
+ 6f8a43519871cbbc79901a8cd017a1622795df76b0efad39b57306ba57984476 2452506 virtuoso-vad-rdfmappers_7.2_all.deb
+ 42490d9ee0f9d674883914204950c20dd6c2aa47f3b5407afb77910eaa0ffad9 564156 virtuoso-vad-sparqldemo_7.2_all.deb
+ dae17854aa28e715a72acc98bbdbd89031a2700b9305ce7f9d9e6628397f4773 44480 virtuoso-vad-syncml_7.2_all.deb
+ 42219872882ecefacd81be79299459834c8a30699d9232227c77d3c734ffd8db 243624 virtuoso-vad-bpel_7.2_all.deb
+ 3ed9ebd4c4174906dcce5a3e2371987130501c697d4bee028e53699b75d5c609 704952 virtuoso-vad-isparql_7.2_all.deb
+ 16a053322b4ff047144cbebace7f9abb45d843faa0b9d3c7f42fb04ae10a2f10 4418108 virtuoso-vad-ods_7.2_all.deb
+ 1ae356da9746ace5917cc75ae49f2db3c9a994cecec5882cd91d019007bc5c35 178034 virtuoso-opensource-7_7.2_amd64.deb
+ 0447d398510c9d53eff04bcb1157e3dcd4725feda2a71abf1639f93bb7b9cdf8 42240 virtuoso-opensource-7-common_7.2_amd64.deb
+ ef1150f73507bd395c55b1f9c6edeea8de5a16441e0f90c602c862a509e50827 3971262 virtuoso-opensource-7-bin_7.2_amd64.deb
+ 073d8c9653c349b6bc0694d1893e85df18962f08728c787b14d1b61f182772cb 376346 libvirtodbc0_7.2_amd64.deb
+ 8f0d96ba32dfcc848cbadae63468fbc7ec142fbe233360ad831bb01d26532ed0 86230 libvirtuoso5.5-cil_7.2_amd64.deb
+ 13fe817db71789b24532d480eb010a887359b8b1308b7f85bcdb50be320c4c66 357368 libvirtjdbc0_7.2_amd64.deb
+Files:
+ d658d681e1835e94afc2077388f41850 3327 database optional virtuoso-opensource_7.2.dsc
+ 130e9aec98de22c2fef9c9352a2acd9e 118900803 database optional virtuoso-opensource_7.2.tar.gz
+ e8b9374a8f4a19d3dfd388d3b04848c4 30906 database optional virtuoso-nepomuk_7.2_all.deb
+ d0714503eac6a5211c262be4cc3071a8 28648 database optional virtuoso-opensource_7.2_all.deb
+ c8bfe69f084166d987c164068c6c0e12 28512 database optional virtuoso-server_7.2_all.deb
+ 7f0439e85fff1dbfc10decdb38299b7c 28574 database optional virtuoso-minimal_7.2_all.deb
+ 8880834ef7ccd09d0106e573a8929f13 449888 database optional virtuoso-vsp-startpage_7.2_all.deb
+ ffec07ea6fec33e64085dfea91a746f1 1269874 database optional virtuoso-vad-conductor_7.2_all.deb
+ f151e56595b68ea551c3fbafb07a2985 28442 doc optional virtuoso-vad-doc_7.2_all.deb
+ c7ffa592e37e285db7952f0f558f013a 10925062 doc optional virtuoso-vad-demo_7.2_all.deb
+ e9276940eb503621e5c01b32296c06e3 2147690 doc optional virtuoso-vad-tutorial_7.2_all.deb
+ 53d2b49d4ef1a61013cc589610f6dab9 2452506 database optional virtuoso-vad-rdfmappers_7.2_all.deb
+ b9d591a4365bd344ce1d4e174f30cae9 564156 database optional virtuoso-vad-sparqldemo_7.2_all.deb
+ 9721c248cd3627cb6e9b5a82b86957f0 44480 database optional virtuoso-vad-syncml_7.2_all.deb
+ e14f5eb06196d7f59067f59cb31422c0 243624 database optional virtuoso-vad-bpel_7.2_all.deb
+ 5129e12e986af211ad2c161a07b3b533 704952 database optional virtuoso-vad-isparql_7.2_all.deb
+ da05a36d42aca09fb3575bca6c73d7fa 4418108 database optional virtuoso-vad-ods_7.2_all.deb
+ de69bdb2628a3169116bda00ea7f47e0 178034 database optional virtuoso-opensource-7_7.2_amd64.deb
+ 3b006734ee9bf91e418e5557636c8460 42240 database optional virtuoso-opensource-7-common_7.2_amd64.deb
+ 2b25fad4427aeeb73213caf04afa98db 3971262 database optional virtuoso-opensource-7-bin_7.2_amd64.deb
+ fc70cb7aaa055dcc5e6fe5fc508a04ae 376346 database optional libvirtodbc0_7.2_amd64.deb
+ 75e12ed851e988402563cca37a33fd29 86230 cli-mono optional libvirtuoso5.5-cil_7.2_amd64.deb
+ 6708ea96f7e8684e89a3e0273943c381 357368 database optional libvirtjdbc0_7.2_amd64.deb
+Original-Maintainer: Obey Arthur Liu <arthur@milliways.fr>
