@@ -6,12 +6,19 @@ RUN echo "deb file:/virtuoso_deb ./" >> /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y --force-yes \
 		virtuoso-server \
+		virtuoso-vad-bpel \
+		virtuoso-vad-conductor \
+		virtuoso-vad-demo \
+		virtuoso-vad-doc \
+		virtuoso-vad-isparql \
+		virtuoso-vad-ods \
 		virtuoso-vad-rdfmappers \
+		virtuoso-vad-sparqldemo \
+		virtuoso-vad-syncml \
+		virtuoso-vad-tutorial \
 	&& cp /virtuoso_deb/dbpedia_dav.vad /usr/share/virtuoso-opensource-7/vad/ \
 	&& sed -i '/^DirsAllowed\s*=/ s_\s*$_, /import_' /etc/virtuoso-opensource-7/virtuoso.ini \
 	&& /etc/init.d/virtuoso-opensource-7 start \
-	&& ( echo "vad_install('/usr/share/virtuoso-opensource-7/vad/rdf_mappers_dav.vad');" | isql-vt ) \
-	&& ( echo "vad_install('/usr/share/virtuoso-opensource-7/vad/dbpedia_dav.vad');" | isql-vt ) \
 	&& /etc/init.d/virtuoso-opensource-7 stop
 
 # sadly it seems host mounted volumes aren't initialized, so back it up to

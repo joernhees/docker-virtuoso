@@ -53,6 +53,19 @@ spawn a bash for you in the database directory via the `-it` run args:
 
     docker run -it joernhees/virtuoso run
 
+To install Virtuoso VAD packages you can use the web-interface, the container's
+interactive command line or an external `docker exec` command. Provided the VAD
+package you want to install is already in the container's filesystem (and in a
+folder which is allowed in the virtuoso.ini), you can for example run the
+following from the interactive command inside the container:
+
+    isql-vt "EXEC=vad_install('/usr/share/virtuoso-opensource-7/vad/dbpedia_dav.vad');"
+
+Or similar from outside the container with `docker exec`:
+
+    docker run -d --name dbpedia joernhees/virtuoso run
+    docker exec dbpedia isql-vt \
+        "EXEC=vad_install('/usr/share/virtuoso-opensource-7/vad/dbpedia_dav.vad');"
 
 Putting it all together to create a DBpedia container:
 
