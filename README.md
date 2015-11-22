@@ -51,21 +51,35 @@ virtuoso.ini file in the container like this:
 Similar to the import mode the container supports interactive mode that will
 spawn a bash for you in the database directory via the `-it` run args:
 
-    docker run -it joernhees/virtuoso run
+    docker run -it -p 8890:8890 joernhees/virtuoso run
 
-To install Virtuoso VAD packages you can use the web-interface, the container's
-interactive command line or an external `docker exec` command. Provided the VAD
-package you want to install is already in the container's filesystem (and in a
-folder which is allowed in the virtuoso.ini), you can for example run the
-following from the interactive command inside the container:
+To install Virtuoso VAD packages you can use the web-interface (should be
+reachable on http://localhost:8890/conductor with default user `dba` and
+password `dba`). The image puts all default VAD files plus the DBpedia one in
+the standard folder `/usr/share/virtuoso-opensource-7/vad/`. Alternatively, you
+can install those VAD files via the container's interactive command line or an
+external `docker exec` command. To add other VAD files i'd suggest to simply
+mount them as files into `/usr/share/virtuoso-opensource-7/vad/` as well.
+Provided the VAD package you want to install is already in the container's
+filesystem (and in a folder which is allowed in the virtuoso.ini), you can for
+example run the following from the interactive command inside the container:
 
     isql-vt "EXEC=vad_install('/usr/share/virtuoso-opensource-7/vad/dbpedia_dav.vad');"
 
 Or similar from outside the container with `docker exec`:
 
-    docker run -d --name dbpedia joernhees/virtuoso run
-    docker exec dbpedia isql-vt \
-        "EXEC=vad_install('/usr/share/virtuoso-opensource-7/vad/dbpedia_dav.vad');"
+    docker run -d --name tmp joernhees/virtuoso run &&
+    docker exec tmp wait_ready &&  # waits for Virtuoso to accept connections
+    docker exec tmp isql-vt \
+        "EXEC=vad_install('/usr/share/virtuoso-opensource-7/vad/dbpedia_dav.vad');" &&
+    docker stop tmp &&
+    docker rm -v tmp
+
+The above also shows how to wait for the Virtuoso DB to actually accept
+connections, which is especially useful if started in background and with a lot
+of RAM. To wait for Virtuoso to be ready simply use:
+
+    docker exec container_name wait_ready
 
 Putting it all together to create a DBpedia container:
 
@@ -74,6 +88,20 @@ Putting it all together to create a DBpedia container:
     # by joining them with &&:
     db_dir=~/dbpedia_virtuoso_db
     dump_dir=/usr/local/data/datasets/remote/dbpedia/2015-04
+
+    # install some VAD packages in the db which we'll keep in db_dir
+    docker run -d --name dbpedia-vadinst \
+        -v "$db_dir":/var/lib/virtuoso-opensource-7 \
+        joernhees/virtuoso run &&
+    docker exec dbpedia-vadinst wait_ready &&
+    docker exec dbpedia-vadinst isql-vt PROMPT=OFF VERBOSE=OFF BANNER=OFF \
+        "EXEC=vad_install('/usr/share/virtuoso-opensource-7/vad/rdf_mappers_dav.vad');" &&
+    docker exec dbpedia-vadinst isql-vt PROMPT=OFF VERBOSE=OFF BANNER=OFF \
+        "EXEC=vad_install('/usr/share/virtuoso-opensource-7/vad/dbpedia_dav.vad');" &&
+    docker stop dbpedia-vadinst &&
+    docker rm -v dbpedia-vadinst &&
+
+    # starting the import
     docker run --rm \
         -v "$db_dir":/var/lib/virtuoso-opensource-7 \
         -v "$dump_dir"/importedGraphs/classes.dbpedia.org:/import:ro \
@@ -83,11 +111,16 @@ Putting it all together to create a DBpedia container:
         -v "$dump_dir"/importedGraphs/dbpedia.org:/import:ro \
         -e "NumberOfBuffers=$((64*85000))" \
         joernhees/virtuoso import 'http://dbpedia.org' &&
-    # running a local endpoint on port 8891:
+
+    # actually running a local endpoint on port 8891:
     docker run --name dbpedia \
         -v "$db_dir":/var/lib/virtuoso-opensource-7 \
         -p 8891:8890 \
         -e "NumberOfBuffers=$((32*85000))" \
         joernhees/virtuoso run
-    # access http://localhost:8891/sparql or http://localhost:8891/resource/Bonn
+
+    # access one of the following for example:
+    # http://localhost:8891/sparql
+    # http://localhost:8891/resource/Bonn
+    # http://localhost:8891/conductor (user: dba, pw: dba)
 
