@@ -109,6 +109,9 @@ if [[ $1 == "import" ]] ; then
 		echo "ERROR: there was at least one error during the import:" >&2
 		echo "$errors" >&2
 	fi
+	isql-vt PROMPT=OFF VERBOSE=OFF BANNER=OFF <<-EOF
+		shutdown;
+	EOF
 
 	if [[ -t 1 ]] ; then
 		# we have a terminal
@@ -121,7 +124,7 @@ if [[ -t 1 ]] ; then
 	# we have a terminal
 	bash
 else
-	while [[ -e "$PID_FILE" ]] ; do sleep 1; done
+	while "$INIT_SCRIPT" status > /dev/null ; do sleep 1; done
 fi
 
 terminate
