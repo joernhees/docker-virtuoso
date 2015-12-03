@@ -110,12 +110,12 @@ if [[ $1 == "import" ]] ; then
 		echo "$errors" >&2
 	fi
 	isql-vt PROMPT=OFF VERBOSE=OFF BANNER=OFF <<-EOF
-		SELECT 'start rebuilding full-text index', CURRENT_TIMESTAMP();
-		DB.DBA.RDF_OBJ_FT_RECOVER();
+		SELECT 'start completion of full-text index', CURRENT_TIMESTAMP();
+		DB.DBA.VT_INC_INDEX_DB_DBA_RDF_OBJ();
 		checkpoint;
 		commit work;
 		checkpoint;
-		SELECT 'rebuilding full-text index finished', CURRENT_TIMESTAMP();
+		SELECT 'completion of full-text index finished', CURRENT_TIMESTAMP();
 		shutdown;
 	EOF
 
