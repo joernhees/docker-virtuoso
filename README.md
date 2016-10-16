@@ -29,7 +29,7 @@ external scripts to easily check for errors during the import.
 
 You can override the virtuoso.ini NumberOfBuffers, MaxDirtyBuffers and
 MaxDirtyBuffers by setting environment variables like in the following. If you
-only specify NumberOfBuffers the other will be computed according to the
+only specify NumberOfBuffers the others will be computed according to the
 recommendations by OpenLink. The recommended NumberOfBuffers per GB of RAM is
 85000, so to use 8 GB do the following:
 
@@ -37,7 +37,8 @@ recommendations by OpenLink. The recommended NumberOfBuffers per GB of RAM is
         joernhees/virtuoso import 'http://dbpedia.org'
 
 If you want to override more virtuoso.ini variables you can simply mount a host
-virtuoso.ini file in the container like this:
+virtuoso.ini file in the container like this (don't use the env-var approach at
+the same time, it will try to modify your file):
 
     # to get a default virtuoso.ini in your home directory:
     container_id=$(docker run -d joernhees/virtuoso run)
@@ -48,7 +49,7 @@ virtuoso.ini file in the container like this:
     docker run -v ~/virtuoso.ini:/etc/virtuoso-opensource-7/virtuoso.ini:ro \
         joernhees/virtuoso run
 
-Similar to the import mode the container supports interactive mode that will
+Similar to the import mode, the container supports interactive mode that will
 spawn a bash for you in the database directory via the `-it` run args:
 
     docker run -it -p 8890:8890 joernhees/virtuoso run
