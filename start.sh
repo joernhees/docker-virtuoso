@@ -69,7 +69,13 @@ if [[ -n "$MaxCheckpointRemap" ]] ; then
 	sed -i "0,/^MaxCheckpointRemap\s*=/ s/^MaxCheckpointRemap\s*=\s*[0-9]*\s*$/MaxCheckpointRemap = $MaxCheckpointRemap/" "$CONF_FILE"
 fi
 
-if [[ $# -lt 1 || $# -gt 2 ]] ; then usage ; fi
+# - no arg: simply start the db.
+# - arg "run": same as no arg (simply start the db)
+# - arg "bash:" will execute a bash _before_ starting the db
+#   (use no arg / "run" with docker's -it switch to run a bash after db start)
+# - args "import <graph_name>": recursively imports everything mounted to the
+#   container's /import directory into <graph_name>
+if [[ $# -gt 2 ]] ; then usage ; fi
 if [[ $# -eq 1 ]] ; then
 	case "$1" in
 		"run") ;;
