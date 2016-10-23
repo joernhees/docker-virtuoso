@@ -12,7 +12,7 @@ PID_FILE=/var/run/virtuoso-opensource-7.pid
 retval=0
 
 function usage {
-	cat /README.md >&2
+	cat /root/README_VIRTUOSO.md >&2
 	exit 1
 }
 

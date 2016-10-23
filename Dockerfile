@@ -93,7 +93,7 @@ EXPOSE 1111 8890
 # replace them in the virtuoso.ini:
 # ENV NumberOfBuffers=10000 MaxDirtyBuffers=6000 MaxCheckpointRemap=2000
 
-COPY README.md /
-COPY start.sh wait_ready /usr/local/sbin/
+COPY ./README.md /root/README_VIRTUOSO.md
+COPY ./start.sh ./wait_ready /usr/local/sbin/
 ENTRYPOINT ["/usr/local/sbin/start.sh"]
 
