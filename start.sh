@@ -87,9 +87,12 @@ if [[ $# -eq 2 && $1 != "import" ]] ; then usage ; fi
 
 if [[ -z $(ls "$DB_DIR") ]] ; then
 	# db dir is empty by host mount, re-init
-	echo -n "initializing db dir..."
+	echo -n "initializing db dir... "
 	cp -a "$DB_DIR_ORIG"/* "$DB_DIR"/
-	echo " done."
+	if [[ -f "$DB_DIR/db/virtuoso.lck" ]] ; then
+		echo -e "\nWARNING: it seems as if init db wasn't shut down properly on image build. Maybe try removing the db/virtuoso.lck file?"
+	fi
+	echo "done."
 fi
 
 # start service in background here
