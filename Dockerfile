@@ -81,6 +81,8 @@ RUN \
 	# init db folder
 	&& /etc/init.d/virtuoso-opensource-7 start \
 	&& /etc/init.d/virtuoso-opensource-7 stop \
+	# sadly the above doesn't really wait for DB shutdown... give it 15 more seconds
+	&& sleep 15 \
 
 	# back init state up to init empty mounted DB volume in start.sh
 	&& cp -a /var/lib/virtuoso-opensource-7 /var/lib/virtuoso-opensource-7.orig
